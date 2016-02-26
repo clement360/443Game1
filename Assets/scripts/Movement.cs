@@ -18,7 +18,6 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         moving = true;
         normalVelocity = rb.velocity = Vector3.left*speed;
-
     }
 
     private void ResumeMoving()
