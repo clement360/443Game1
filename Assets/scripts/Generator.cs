@@ -25,8 +25,7 @@ public class Generator : MonoBehaviour
         return oneIsStopped;
     }
 
-<<<<<<< HEAD
-    private void generateBlocks()
+    public void generateBlocks()
     {
         Debug.Log(oneIsStopped);
         Instantiate(block, new Vector3(0, 0, 5), Quaternion.identity );
@@ -39,10 +38,5 @@ public class Generator : MonoBehaviour
             generateBlocks();
         }
     }
-=======
-	public void generateBlocks ()
-	{
-		
-	}
->>>>>>> origin/master
+
 }
