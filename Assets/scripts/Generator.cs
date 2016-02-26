@@ -7,11 +7,13 @@ public class Generator : MonoBehaviour
 {
     private bool oneIsStopped;
     [SerializeField] private GameObject block;
+    public Movement stoppedBlock;
 
 	// Use this for initialization
 	void Start ()
 	{
 	    oneIsStopped = false;
+        stoppedBlock = null;
         //Debug.Log("oneIsStopped is " + oneIsStopped);
 	}
 

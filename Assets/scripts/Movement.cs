@@ -26,13 +26,20 @@ public class Movement : MonoBehaviour
         rb.velocity = normalVelocity;
         moving = true;
         SetOneIsStopped(false);
+        generator.GetComponent<Generator>().stoppedBlock = null;
     }
 
     private void StopMoving()
     {
+        if (generator.GetComponent<Generator>().stoppedBlock != null)
+        {
+            generator.GetComponent<Generator>().stoppedBlock.rb.velocity = Vector3.zero;
+        }
+
         rb.velocity = Vector3.zero;
         moving = false;
         SetOneIsStopped(true);
+        generator.GetComponent<Generator>().stoppedBlock = this;
     }
 
     private void SetOneIsStopped(bool isMoving)
