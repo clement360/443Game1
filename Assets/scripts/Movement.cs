@@ -6,7 +6,6 @@ public class Movement : MonoBehaviour
     [SerializeField] private GameObject generator;
     [SerializeField] private float speed;
 
-    
     private Rigidbody rb;
     private Vector3 normalVelocity;
     private bool moving;
