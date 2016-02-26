@@ -21,4 +21,9 @@ public class Generator : MonoBehaviour
     {
         return oneIsStopped;
     }
+
+	public void generateBlocks ()
+	{
+		
+	}
 }
