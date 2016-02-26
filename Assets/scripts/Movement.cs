@@ -3,9 +3,9 @@ using System.Collections;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private GameObject generator;
+    private GameObject generator;
     [SerializeField] private float speed;
-
+   // private Generator generatorScript;
     private Rigidbody rb;
     private Vector3 normalVelocity;
     private bool moving;
@@ -14,11 +14,13 @@ public class Movement : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
+        generator = GameObject.FindGameObjectWithTag("Generator");
         //oneIsStopped = false;
         rb = GetComponent<Rigidbody>();
         moving = true;
         normalVelocity = rb.velocity = Vector3.left*speed;
-
+        //generatorScript = generator.GetComponent<Generator>() ;
+        //Debug.Log("oneIsStopped is " + generator.GetComponent<Generator>().GetOneIsStopped());
     }
 
     private void ResumeMoving()
@@ -42,12 +44,15 @@ public class Movement : MonoBehaviour
 
     void ToggleMovement()
     {
+        Debug.Log("Moving is " + moving + " ,oneIsStopped is " + generator.GetComponent<Generator>().GetOneIsStopped());
         if (moving && !generator.GetComponent<Generator>().GetOneIsStopped())
         {
+            Debug.Log("About to StopMoving");
             StopMoving();
         }
         else if (!moving)
         {
+            Debug.Log("About to ResumeMoving");
             ResumeMoving();
         }
     }
