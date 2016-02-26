@@ -19,8 +19,11 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         moving = true;
         normalVelocity = rb.velocity = Vector3.left*speed;
+<<<<<<< HEAD
         //generatorScript = generator.GetComponent<Generator>() ;
         //Debug.Log("oneIsStopped is " + generator.GetComponent<Generator>().GetOneIsStopped());
+=======
+>>>>>>> origin/master
     }
 
     private void ResumeMoving()

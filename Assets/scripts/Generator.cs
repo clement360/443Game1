@@ -25,6 +25,7 @@ public class Generator : MonoBehaviour
         return oneIsStopped;
     }
 
+<<<<<<< HEAD
     private void generateBlocks()
     {
         Debug.Log(oneIsStopped);
@@ -38,4 +39,10 @@ public class Generator : MonoBehaviour
             generateBlocks();
         }
     }
+=======
+	public void generateBlocks ()
+	{
+		
+	}
+>>>>>>> origin/master
 }
