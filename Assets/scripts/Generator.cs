@@ -5,15 +5,27 @@ using UnityEditorInternal;
 
 public class Generator : MonoBehaviour
 {
+
+    public static Generator instance = null;
     private bool oneIsStopped;
     [SerializeField] private GameObject block;
     public Movement stoppedBlock;
 
-	// Use this for initialization
-	void Start ()
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+
+        stoppedBlock = null;
+    }
+
+    // Use this for initialization
+    void Start ()
 	{
 	    oneIsStopped = false;
-        stoppedBlock = null;
+        
         //Debug.Log("oneIsStopped is " + oneIsStopped);
 	}
 

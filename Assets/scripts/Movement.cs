@@ -5,7 +5,6 @@ public class Movement : MonoBehaviour
 {
     private GameObject generator;
     [SerializeField] private float speed;
-   // private Generator generatorScript;
     private Rigidbody rb;
     private Vector3 normalVelocity;
     private bool moving;
@@ -26,20 +25,20 @@ public class Movement : MonoBehaviour
         rb.velocity = normalVelocity;
         moving = true;
         SetOneIsStopped(false);
-        generator.GetComponent<Generator>().stoppedBlock = null;
+        Generator.instance.stoppedBlock = null;
     }
 
     private void StopMoving()
     {
-        if (generator.GetComponent<Generator>().stoppedBlock != null)
+        if (Generator.instance.stoppedBlock != null)
         {
-            generator.GetComponent<Generator>().stoppedBlock.rb.velocity = Vector3.zero;
+            Generator.instance.stoppedBlock.rb.velocity = normalVelocity; ;
         }
 
         rb.velocity = Vector3.zero;
         moving = false;
         SetOneIsStopped(true);
-        generator.GetComponent<Generator>().stoppedBlock = this;
+        Generator.instance.stoppedBlock = this;
     }
 
     private void SetOneIsStopped(bool isMoving)
