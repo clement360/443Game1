@@ -7,9 +7,8 @@ public class Generator : MonoBehaviour
 {
 
     public static Generator instance = null;
-    private bool oneIsStopped;
-    [SerializeField] private GameObject block;
-    public Movement stoppedBlock;
+	[NonSerialized] public BlockController stoppedBlock;
+	[SerializeField] private GameObject block;
 
     void Awake()
     {
@@ -24,24 +23,11 @@ public class Generator : MonoBehaviour
     // Use this for initialization
     void Start ()
 	{
-	    oneIsStopped = false;
-        
-        //Debug.Log("oneIsStopped is " + oneIsStopped);
+
 	}
-
-    public void SetOneIsStopped(bool moving)
-    {
-        oneIsStopped = moving;
-    }
-
-    public bool GetOneIsStopped()
-    {
-        return oneIsStopped;
-    }
 
     public void generateBlocks()
     {
-        Debug.Log(oneIsStopped);
         Instantiate(block, new Vector3(0, 0, 5), Quaternion.identity );
     }
 
