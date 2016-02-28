@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour {
 	public Generator generator;
 	public BoardManager boardScript;
 
-    public bool oneIsStopped;
-
 	// Use this for initialization
 	void Awake () {
 		if (instance == null)
@@ -23,7 +21,6 @@ public class GameManager : MonoBehaviour {
 
 	void InitGame ()
 	{
-        oneIsStopped = false;
 		boardScript.SetupScene ();
 	}
 	
