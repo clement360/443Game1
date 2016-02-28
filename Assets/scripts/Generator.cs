@@ -1,10 +1,14 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using Random = UnityEngine.Random;
 using UnityEditorInternal;
 
 public class Generator : MonoBehaviour
 {
+
+	public int updateRate;
+	private int frame;
 
     public static Generator instance = null;
 	[NonSerialized] public BlockController stoppedBlock;
@@ -23,20 +27,23 @@ public class Generator : MonoBehaviour
     // Use this for initialization
     void Start ()
 	{
-
+		frame = 0;
 	}
 
-    public void generateBlocks()
-    {
-        Instantiate(block, new Vector3(0, 0, 5), Quaternion.identity );
+    public void generateBlock()
+	{
+		int randomX = Random.Range(-9, 9);
+		Instantiate(block, new Vector3(randomX, 8, 0), Quaternion.identity );
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            generateBlocks();
-        }
+		if (frame == updateRate) 
+		{
+			generateBlock();
+			frame = 0;
+		}
+		frame++;
     }
 
 }

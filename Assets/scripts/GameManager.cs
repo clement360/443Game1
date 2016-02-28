@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour {
 	{
         oneIsStopped = false;
 		boardScript.SetupScene ();
-		generator.generateBlocks ();
 	}
 	
 	// Update is called once per frame
