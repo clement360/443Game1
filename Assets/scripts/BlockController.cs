@@ -33,7 +33,12 @@ public class BlockController : MonoBehaviour
 
     void ToggleMovement()
     {
-        if (Generator.instance.stoppedBlock == this)
+		// this prevents the player block from moving if another block is selected
+		if(Generator.instance.stoppedBlock != null)
+			if (Generator.instance.stoppedBlock.tag == "Player")
+				return;
+		
+		if (Generator.instance.stoppedBlock == this)
         {
             ResumeMoving(this);
         }
@@ -49,10 +54,19 @@ public class BlockController : MonoBehaviour
     {
         if (Input.GetKeyDown("mouse 0"))
         {
+			// if you click the player block again it should not move
+			if (this.tag == "Player")
+				return;
+
+
             ToggleMovement();
 			if (touchingPlayer) {
 				Vector3 myCenter = this.transform.position;
 				GameManager.instance.MovePlayer (myCenter);
+
+				Destroy(GameObject.FindGameObjectWithTag ("Player"));
+				this.tag = "Player";
+				Generator.instance.stoppedBlock = null;
 			}
         }
 

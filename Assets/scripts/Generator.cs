@@ -12,7 +12,7 @@ public class Generator : MonoBehaviour
 
     public static Generator instance = null;
 	[NonSerialized] public BlockController stoppedBlock;
-	[SerializeField] private GameObject block;
+	public GameObject block;
 
     void Awake()
     {
@@ -34,7 +34,7 @@ public class Generator : MonoBehaviour
 	{
 		int randomX = Random.Range(-9, 9);
 		Instantiate(block, new Vector3(randomX, 8, 0), Quaternion.identity );
-    }
+	}
 
     void FixedUpdate()
     {
