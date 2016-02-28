@@ -7,12 +7,15 @@ public class BlockController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 normalVelocity;
 
+	private bool touchingPlayer;
+
     //private static bool oneIsStopped;
     // Use this for initialization
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         normalVelocity = rb.velocity = Vector3.down*speed;
+		touchingPlayer = false;
     }
 
 	private void ResumeMoving(BlockController block)
@@ -47,15 +50,27 @@ public class BlockController : MonoBehaviour
         if (Input.GetKeyDown("mouse 0"))
         {
             ToggleMovement();
+			if (touchingPlayer) {
+				Vector3 myCenter = this.transform.position;
+				GameManager.instance.MovePlayer (myCenter);
+			}
         }
 
     }
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Boundry") 
-		{
+		if (other.gameObject.tag == "Boundry") {
 			Destroy (gameObject);
+		} else if (other.gameObject.tag == "Player") {
+			touchingPlayer = true;
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D other)
+	{
+		if (other.gameObject.tag == "Player") {
+			touchingPlayer = false;
 		}
 	}
 
@@ -63,6 +78,5 @@ public class BlockController : MonoBehaviour
     void OnMouseOver()
     {
         DetectMouseClick();
-
     }
 }

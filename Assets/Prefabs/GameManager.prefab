@@ -41,6 +41,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startBlock: {fileID: 186560, guid: fc4ee99915027744182ae940e8c07c10, type: 2}
+  finishBlock: {fileID: 168396, guid: 3bd95375949f9254bb98d7de4a240d3b, type: 2}
 --- !u!114 &11494728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,7 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generator: {fileID: 11464816, guid: 02668127ae51f5443a914a9af2610fec, type: 2}
   boardScript: {fileID: 0}
-  oneIsStopped: 0
+  player: {fileID: 177760, guid: 7c2643832ad8885499354046ea31d168, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

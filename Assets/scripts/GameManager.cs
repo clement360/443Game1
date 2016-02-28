@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour {
 	public Generator generator;
 	public BoardManager boardScript;
 
+	public GameObject player;
+
 	// Use this for initialization
 	void Awake () {
 		if (instance == null)
@@ -22,6 +24,12 @@ public class GameManager : MonoBehaviour {
 	void InitGame ()
 	{
 		boardScript.SetupScene ();
+		Instantiate(player, new Vector3(-8f, 0, 0), Quaternion.identity );
+	}
+
+	public void MovePlayer(Vector3 dest)
+	{
+		player.transform.position = dest;
 	}
 	
 	// Update is called once per frame
