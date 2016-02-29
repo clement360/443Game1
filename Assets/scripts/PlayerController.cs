@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.gameObject.tag == "Finish")
-			Invoke("Restart", 1);
+			Invoke("Restart", (float)0.1);
 	}
 
 	private void Restart()
