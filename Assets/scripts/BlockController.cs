@@ -95,7 +95,6 @@ public class BlockController : MonoBehaviour
 		}
 	}
 
-
     void OnMouseOver()
     {
         DetectMouseClick();
