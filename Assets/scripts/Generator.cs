@@ -32,7 +32,7 @@ public class Generator : MonoBehaviour
 
     public void generateBlock()
 	{
-		int randomX = Random.Range(-9, 9);
+        int randomX = Random.Range(GameManager.instance.playerPos, GameManager.instance.playerPos + 9);
 		Instantiate(block, new Vector3(randomX, 8, 0), Quaternion.identity );
 	}
 
