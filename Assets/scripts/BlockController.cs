@@ -4,9 +4,9 @@ using System.Collections;
 public class BlockController : MonoBehaviour
 {
     public float speed;
+
     private Rigidbody2D rb;
     private Vector3 normalVelocity;
-
 	private bool touchingPlayer;
 
     //private static bool oneIsStopped;
@@ -58,10 +58,9 @@ public class BlockController : MonoBehaviour
 			if (this.tag == "Player")
 				return;
 
-
-            ToggleMovement();
 			if (touchingPlayer) {
-				Vector3 myCenter = this.transform.position;
+                ToggleMovement();
+                Vector3 myCenter = this.transform.position;
 				GameManager.instance.MovePlayer (myCenter);
 
 				Destroy(GameObject.FindGameObjectWithTag ("Player"));

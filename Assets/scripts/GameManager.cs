@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 	public BoardManager boardScript;
 
 	public GameObject player;
+    public int playerPos;
 	private GameObject playerObject;
 
 	// Use this for initialization
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour {
 	{
 		boardScript.SetupScene ();
 		playerObject = (GameObject) Instantiate(player, new Vector3(-8f, 0, 0), Quaternion.identity );
+        playerPos = -8;
 	}
 
 	public void MovePlayer(Vector3 dest)
