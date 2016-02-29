@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour {
 	{
 		playerObject.transform.position = dest + new Vector3(0f, .3f, 0f);
 	}
-		
+			
 	// Update is called once per frame
 	void Update () {
 

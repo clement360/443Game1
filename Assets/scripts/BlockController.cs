@@ -84,25 +84,11 @@ public class BlockController : MonoBehaviour
 	{
         if (other.gameObject.tag == "Boundry") {
             Destroy(gameObject);
-        } else if (other.gameObject.tag == "Finish") {
-            Invoke("Restart", 1);
-        }
+		}
         else if (other.gameObject.tag == "Current Block" || other.gameObject.tag == "Start") {
             touchingPlayer = true;
         }
 	}
-
-	void OnTriggerExit2D(Collider2D other)
-	{
-		if (other.gameObject.tag == "Current Block") {
-			touchingPlayer = false;
-		}
-	}
-
-    private void Restart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
 
     void OnMouseOver()
     {
