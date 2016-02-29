@@ -12,7 +12,7 @@ public class BoardManager : MonoBehaviour {
 	{
 		// place the start block and put the penguin on top
 		Instantiate(startBlock, new Vector3(-8f, 0, 0), Quaternion.identity );
-		startBlock.tag = "Player";
+		startBlock.tag = "Start";
 
 		Instantiate(finishBlock, new Vector3(8f, 0, 0), Quaternion.identity );
 	}

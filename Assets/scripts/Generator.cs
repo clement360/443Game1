@@ -9,8 +9,10 @@ public class Generator : MonoBehaviour
 
 	public int updateRate;
 	private int frame;
+    private int randomX;
 
     public static Generator instance = null;
+    [NonSerialized] public BlockController prevBlock;
 	[NonSerialized] public BlockController stoppedBlock;
 	public GameObject block;
 
@@ -22,6 +24,7 @@ public class Generator : MonoBehaviour
             Destroy(gameObject);
 
         stoppedBlock = null;
+        prevBlock = null;
     }
 
     // Use this for initialization
@@ -32,8 +35,12 @@ public class Generator : MonoBehaviour
 
     public void generateBlock()
 	{
-        int randomX = Random.Range(GameManager.instance.playerPos, GameManager.instance.playerPos + 9);
-		Instantiate(block, new Vector3(randomX, 8, 0), Quaternion.identity );
+        if (GameManager.instance.playerPos < 0)
+            randomX = Random.Range(GameManager.instance.playerPos+1, GameManager.instance.playerPos + 7);
+        else
+            randomX = Random.Range(GameManager.instance.playerPos+1, 9);
+
+        Instantiate(block, new Vector3(randomX, 8, 0), Quaternion.identity );
 	}
 
     void FixedUpdate()

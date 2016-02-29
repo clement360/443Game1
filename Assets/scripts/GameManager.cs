@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject player;
     public int playerPos;
-	private GameObject playerObject;
+	public GameObject playerObject;
 
 	// Use this for initialization
 	void Awake () {
