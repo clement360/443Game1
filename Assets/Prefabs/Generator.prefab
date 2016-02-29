@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fb245e37dedc5489478dfa3c0c369c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateRate: 60
+  updateRate: 45
   block: {fileID: 138556, guid: 484e2931d5df43041babae3a2857110c, type: 2}
 --- !u!1001 &100100000
 Prefab:
@@ -51,6 +51,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Generator
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: updateRate
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

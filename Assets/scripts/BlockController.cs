@@ -10,6 +10,7 @@ public class BlockController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 normalVelocity;
 	private bool touchingPlayer;
+	private bool touchingFinish;
 
     // Use this for initialization
     private void Start()
@@ -17,6 +18,7 @@ public class BlockController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 		normalVelocity = rb.velocity = direction * speed;
 		touchingPlayer = false;
+		touchingFinish = false;
     }
 
 	public void setDirection (Vector3 dir)
@@ -58,59 +60,48 @@ public class BlockController : MonoBehaviour
 
     private void DetectMouseClick()
     {
-        if (Input.GetKeyDown("mouse 0"))
-        {
+		if (Input.GetKeyDown ("mouse 0")) {
 			// if you click the player block again it should not move
 			if (this.tag == "Current Block")
 				return;
 
 			if (touchingPlayer) {
-                ToggleMovement();
-                Vector3 myCenter = this.transform.position;
+				ToggleMovement ();
+				Vector3 myCenter = this.transform.position;
 				GameManager.instance.MovePlayer (myCenter);
-                GameManager.instance.playerPos = (int)myCenter.x;
+				GameManager.instance.playerPosX = (int)myCenter.x;
+				GameManager.instance.playerPosY = (int)myCenter.y;
 
-                if (Generator.instance.prevBlock == null)
-                {
-                    Destroy(GameObject.FindGameObjectWithTag("Start"));
-                } else
-                {
-                    Destroy(GameObject.FindGameObjectWithTag("Current Block"));
-                }
+				if (Generator.instance.prevBlock == null) {
+					Destroy (GameObject.FindGameObjectWithTag ("Start"));
+				} else {
+					Destroy (GameObject.FindGameObjectWithTag ("Current Block"));
+				}
                 
-                this.tag = "Current Block";
-                Generator.instance.prevBlock = Generator.instance.stoppedBlock;
-                Generator.instance.stoppedBlock = null;
+				this.tag = "Current Block";
+				Generator.instance.prevBlock = Generator.instance.stoppedBlock;
+				Generator.instance.stoppedBlock = null;
 			}
-        }
+		}
 
     }
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-// <<<<<<< HEAD
-// 		if (other.gameObject.tag == "Boundry") {
-// 			Destroy (gameObject);
-// 		} else if (other.gameObject.tag == "Player") {
-// 			touchingPlayer = true;
-// 		} 
-// 	}
-
-// 	void OnTriggerExit2D(Collider2D other)
-// 	{
-// 		if (other.gameObject.tag == "Player") {
-// 			touchingPlayer = false;
-// 		} 
-// 	}
-		
-// =======
-        if (other.gameObject.tag == "Boundry") {
-            Destroy(gameObject);
-		}
+		if (other.gameObject.tag == "Boundry") {
+			Destroy (gameObject);
+		} 
         else if (other.gameObject.tag == "Current Block" || other.gameObject.tag == "Start") {
             touchingPlayer = true;
         }
 	}
+
+ 	void OnTriggerExit2D(Collider2D other)
+	 {
+		if (other.gameObject.tag == "Current Block" || other.gameObject.tag == "Start") {
+			touchingPlayer = false;
+		}
+	 }
 
     void OnMouseOver()
     {
