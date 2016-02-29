@@ -4,19 +4,24 @@ using System.Collections;
 public class BlockController : MonoBehaviour
 {
     public float speed;
+	private Vector3 direction;
     private Rigidbody2D rb;
     private Vector3 normalVelocity;
 
 	private bool touchingPlayer;
 
-    //private static bool oneIsStopped;
     // Use this for initialization
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        normalVelocity = rb.velocity = Vector3.down*speed;
+		normalVelocity = rb.velocity = direction * speed;
 		touchingPlayer = false;
     }
+
+	public void setDirection (Vector3 dir)
+	{
+		this.direction = dir;
+	}
 
 	private void ResumeMoving(BlockController block)
     {
@@ -58,8 +63,9 @@ public class BlockController : MonoBehaviour
 			if (this.tag == "Player")
 				return;
 
-
             ToggleMovement();
+
+			// if selected block is touching the player -> Move player to new block
 			if (touchingPlayer) {
 				Vector3 myCenter = this.transform.position;
 				GameManager.instance.MovePlayer (myCenter);
@@ -78,17 +84,16 @@ public class BlockController : MonoBehaviour
 			Destroy (gameObject);
 		} else if (other.gameObject.tag == "Player") {
 			touchingPlayer = true;
-		}
+		} 
 	}
 
 	void OnTriggerExit2D(Collider2D other)
 	{
 		if (other.gameObject.tag == "Player") {
 			touchingPlayer = false;
-		}
+		} 
 	}
-
-
+		
     void OnMouseOver()
     {
         DetectMouseClick();

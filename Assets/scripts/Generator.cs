@@ -2,7 +2,6 @@
 using UnityEngine;
 using System.Collections;
 using Random = UnityEngine.Random;
-using UnityEditorInternal;
 
 public class Generator : MonoBehaviour
 {
@@ -33,7 +32,15 @@ public class Generator : MonoBehaviour
     public void generateBlock()
 	{
 		int randomX = Random.Range(-9, 9);
-		Instantiate(block, new Vector3(randomX, 8, 0), Quaternion.identity );
+		GameObject down = Instantiate(block, new Vector3(randomX, 8, 0), Quaternion.identity ) as GameObject;
+		BlockController downController = (BlockController)down.GetComponent<BlockController> ();
+		downController.setDirection (Vector3.down);
+
+
+		int randomY = Random.Range (-5, 5);
+		GameObject right = Instantiate(block, new Vector3(-11, randomY, 0), Quaternion.identity ) as GameObject;
+		BlockController rightController = (BlockController)right.GetComponent<BlockController> ();
+		rightController.setDirection(Vector3.right);
 	}
 
     void FixedUpdate()
