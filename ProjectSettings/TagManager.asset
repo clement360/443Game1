@@ -8,6 +8,8 @@ TagManager:
   - Boundry
   - Start
   - Block
+  - Previous Block
+  - Current Block
   layers:
   - Default
   - TransparentFX

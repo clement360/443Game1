@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 
@@ -9,7 +10,8 @@ public class GameManager : MonoBehaviour {
 	public BoardManager boardScript;
 
 	public GameObject player;
-	private GameObject playerObject;
+    public int playerPos;
+	public GameObject playerObject;
 
 	// Use this for initialization
 	void Awake () {
@@ -27,13 +29,14 @@ public class GameManager : MonoBehaviour {
 	{
 		boardScript.SetupScene ();
 		playerObject = (GameObject) Instantiate(player, new Vector3(-8f, 0, 0), Quaternion.identity );
+        playerPos = -8;
 	}
 
 	public void MovePlayer(Vector3 dest)
 	{
 		playerObject.transform.position = dest + new Vector3(0f, .3f, 0f);
 	}
-		
+			
 	// Update is called once per frame
 	void Update () {
 

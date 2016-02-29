@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class BlockController : MonoBehaviour
 {
     public float speed;
 	private Vector3 direction;
+
     private Rigidbody2D rb;
     private Vector3 normalVelocity;
-
 	private bool touchingPlayer;
 
     // Use this for initialization
@@ -40,7 +41,7 @@ public class BlockController : MonoBehaviour
     {
 		// this prevents the player block from moving if another block is selected
 		if(Generator.instance.stoppedBlock != null)
-			if (Generator.instance.stoppedBlock.tag == "Player")
+			if (Generator.instance.stoppedBlock.tag == "Current Block")
 				return;
 		
 		if (Generator.instance.stoppedBlock == this)
@@ -60,19 +61,26 @@ public class BlockController : MonoBehaviour
         if (Input.GetKeyDown("mouse 0"))
         {
 			// if you click the player block again it should not move
-			if (this.tag == "Player")
+			if (this.tag == "Current Block")
 				return;
 
-            ToggleMovement();
-
-			// if selected block is touching the player -> Move player to new block
 			if (touchingPlayer) {
-				Vector3 myCenter = this.transform.position;
+                ToggleMovement();
+                Vector3 myCenter = this.transform.position;
 				GameManager.instance.MovePlayer (myCenter);
+                GameManager.instance.playerPos = (int)myCenter.x;
 
-				Destroy(GameObject.FindGameObjectWithTag ("Player"));
-				this.tag = "Player";
-				Generator.instance.stoppedBlock = null;
+                if (Generator.instance.prevBlock == null)
+                {
+                    Destroy(GameObject.FindGameObjectWithTag("Start"));
+                } else
+                {
+                    Destroy(GameObject.FindGameObjectWithTag("Current Block"));
+                }
+                
+                this.tag = "Current Block";
+                Generator.instance.prevBlock = Generator.instance.stoppedBlock;
+                Generator.instance.stoppedBlock = null;
 			}
         }
 
@@ -80,20 +88,30 @@ public class BlockController : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Boundry") {
-			Destroy (gameObject);
-		} else if (other.gameObject.tag == "Player") {
-			touchingPlayer = true;
-		} 
+// <<<<<<< HEAD
+// 		if (other.gameObject.tag == "Boundry") {
+// 			Destroy (gameObject);
+// 		} else if (other.gameObject.tag == "Player") {
+// 			touchingPlayer = true;
+// 		} 
+// 	}
+
+// 	void OnTriggerExit2D(Collider2D other)
+// 	{
+// 		if (other.gameObject.tag == "Player") {
+// 			touchingPlayer = false;
+// 		} 
+// 	}
+		
+// =======
+        if (other.gameObject.tag == "Boundry") {
+            Destroy(gameObject);
+		}
+        else if (other.gameObject.tag == "Current Block" || other.gameObject.tag == "Start") {
+            touchingPlayer = true;
+        }
 	}
 
-	void OnTriggerExit2D(Collider2D other)
-	{
-		if (other.gameObject.tag == "Player") {
-			touchingPlayer = false;
-		} 
-	}
-		
     void OnMouseOver()
     {
         DetectMouseClick();
