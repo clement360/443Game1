@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class BlockController : MonoBehaviour
@@ -81,11 +82,14 @@ public class BlockController : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Boundry") {
-			Destroy (gameObject);
-		} else if (other.gameObject.tag == "Current Block" || other.gameObject.tag == "Start") {
-			touchingPlayer = true;
-		}
+        if (other.gameObject.tag == "Boundry") {
+            Destroy(gameObject);
+        } else if (other.gameObject.tag == "Finish") {
+            Invoke("Restart", 1);
+        }
+        else if (other.gameObject.tag == "Current Block" || other.gameObject.tag == "Start") {
+            touchingPlayer = true;
+        }
 	}
 
 	void OnTriggerExit2D(Collider2D other)
@@ -94,6 +98,11 @@ public class BlockController : MonoBehaviour
 			touchingPlayer = false;
 		}
 	}
+
+    private void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
     void OnMouseOver()
     {

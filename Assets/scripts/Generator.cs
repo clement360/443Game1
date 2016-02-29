@@ -36,7 +36,7 @@ public class Generator : MonoBehaviour
     public void generateBlock()
 	{
         if (GameManager.instance.playerPos < 0)
-            randomX = Random.Range(GameManager.instance.playerPos+1, GameManager.instance.playerPos + 7);
+            randomX = Random.Range(GameManager.instance.playerPos+1, GameManager.instance.playerPos + 5);
         else
             randomX = Random.Range(GameManager.instance.playerPos+1, 9);
 
