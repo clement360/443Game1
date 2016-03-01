@@ -14,6 +14,7 @@ public class Generator : MonoBehaviour
     public static Generator instance = null;
     [NonSerialized] public BlockController prevBlock;
 	[NonSerialized] public BlockController stoppedBlock;
+
 	public GameObject block;
 
     void Awake()
@@ -38,7 +39,7 @@ public class Generator : MonoBehaviour
 		randomX = Random.Range (GameManager.instance.playerPosX-2, GameManager.instance.playerPosX+2);
 		randomY = Random.Range (GameManager.instance.playerPosY - 2, GameManager.instance.playerPosY + 2);
 
-		GameObject down = Instantiate(block, new Vector3(randomX, 8, 0), Quaternion.identity ) as GameObject;
+		GameObject down = Instantiate(block, new Vector3(randomX, 8, 0), Quaternion.identity) as GameObject;
 		BlockController downController = (BlockController)down.GetComponent<BlockController> ();
 		downController.setDirection (Vector3.down);
 

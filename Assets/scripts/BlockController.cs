@@ -10,7 +10,6 @@ public class BlockController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 normalVelocity;
 	private bool touchingPlayer;
-	private bool touchingFinish;
 
     // Use this for initialization
     private void Start()
@@ -18,7 +17,6 @@ public class BlockController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 		normalVelocity = rb.velocity = direction * speed;
 		touchingPlayer = false;
-		touchingFinish = false;
     }
 
 	public void setDirection (Vector3 dir)

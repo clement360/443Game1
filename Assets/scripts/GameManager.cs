@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour {
 
+    public float levelStartDelay = 2f;
 	public static GameManager instance = null;
 	public Generator generator;
 	public BoardManager boardScript;
@@ -13,6 +15,11 @@ public class GameManager : MonoBehaviour {
     public int playerPosX;
 	public int playerPosY;
 	public GameObject playerObject;
+
+    public GameObject levelText;
+    private GameObject tempTextBox;
+
+    private int Level = 1;
 
 	// Use this for initialization
 	void Awake () {
@@ -26,12 +33,31 @@ public class GameManager : MonoBehaviour {
 		InitGame ();
 	}
 
+    public void displayText()
+    {
+        Destroy(tempTextBox);
+        //Instantiates the Object
+        tempTextBox = (GameObject)Instantiate(levelText, new Vector3(0, -4, 0), Quaternion.identity);
+
+        //Grabs the TextMesh component from the game object
+        TextMesh theText = tempTextBox.transform.GetComponent<TextMesh>();
+
+        //Sets the text.
+        theText.text = "Level: " + Level;
+    }
+
+	void OnLevelWasLoaded(int index){
+		Level++;
+        displayText();
+    }
+
 	void InitGame ()
 	{
 		boardScript.SetupScene ();
 		playerObject = (GameObject) Instantiate(player, new Vector3(-8f, 0, 0), Quaternion.identity );
         playerPosX = -8;
 		playerPosY = 0;
+        displayText();
 	}
 
 	public void MovePlayer(Vector3 dest)

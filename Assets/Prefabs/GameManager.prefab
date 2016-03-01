@@ -53,9 +53,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b286357bcb561164391db05a542f4a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelStartDelay: 2
   generator: {fileID: 11464816, guid: 02668127ae51f5443a914a9af2610fec, type: 2}
   boardScript: {fileID: 0}
   player: {fileID: 177760, guid: 7c2643832ad8885499354046ea31d168, type: 2}
+  playerPosX: 0
+  playerPosY: 0
+  playerObject: {fileID: 0}
+  levelText: {fileID: 161268, guid: 6e093424747d02b48805bbba514522a6, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

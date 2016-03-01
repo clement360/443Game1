@@ -41,6 +41,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateRate: 45
   block: {fileID: 138556, guid: 484e2931d5df43041babae3a2857110c, type: 2}
+  block2: {fileID: 199710, guid: 23c5031c82732fd40bd763963d27c858, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
