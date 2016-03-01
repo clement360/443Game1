@@ -7,7 +7,9 @@ public class Generator : MonoBehaviour
 {
 
 	public int updateRate;
+    public int waveRate;
 	private int frame;
+    private int frame2;
     private int randomX;
 	private int randomY;
 
@@ -16,6 +18,7 @@ public class Generator : MonoBehaviour
 	[NonSerialized] public BlockController stoppedBlock;
 
 	public GameObject block;
+    public GameObject waveBlock;
 
     void Awake()
     {
@@ -48,6 +51,25 @@ public class Generator : MonoBehaviour
 		rightController.setDirection(Vector3.right);
 	}
 
+    IEnumerator generateWave() {
+        int xVal = GameManager.instance.playerPosY;
+        bool rand = Random.Range(0, 20) % 2 == 0;
+        Vector3 position;
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (rand) {
+                position = new Vector3(-11, xVal + i * .5f, 0);
+            } else {
+                position = new Vector3(-11, xVal - i * .5f, 0);
+            }
+            GameObject right = Instantiate(waveBlock, position, Quaternion.identity) as GameObject;
+            BlockController rightController = (BlockController)right.GetComponent<BlockController>();
+            rightController.setDirection(Vector3.right);
+            yield return new WaitForSeconds(.3f);
+        }
+    }
+
     void FixedUpdate()
     {
 		if (frame == updateRate) 
@@ -55,6 +77,13 @@ public class Generator : MonoBehaviour
 			generateBlock();
 			frame = 0;
 		}
+
+        if (frame2 == waveRate * updateRate)
+        {
+            StartCoroutine(generateWave());
+            frame2 = 0;
+        }
+        frame2++;
 		frame++;
     }
 

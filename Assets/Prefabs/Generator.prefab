@@ -39,9 +39,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fb245e37dedc5489478dfa3c0c369c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateRate: 45
+  updateRate: 55
+  waveRate: 12
   block: {fileID: 138556, guid: 484e2931d5df43041babae3a2857110c, type: 2}
-  block2: {fileID: 199710, guid: 23c5031c82732fd40bd763963d27c858, type: 2}
+  waveBlock: {fileID: 190804, guid: 0d042fcc410953641af616f76035d1da, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
