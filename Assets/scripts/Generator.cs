@@ -96,7 +96,7 @@ public class Generator : MonoBehaviour
     {
 		if (frame == updateRate) 
 		{
-			generateBlock();
+            generateBlock();
 			frame = 0;
 		}
 
@@ -106,7 +106,7 @@ public class Generator : MonoBehaviour
             frame2 = 0;
         }
 
-        if(frame3 == enemyRate * updateRate)
+        if(frame3 == enemyRate * updateRate && GameManager.instance.Level >= 3)
         {
             StartCoroutine(generateEnemy());
             frame3 = 0;

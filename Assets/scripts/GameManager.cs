@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject levelText;
     private GameObject tempTextBox;
-    public int Level = 0;
+    public int Level;
 
 	// Use this for initialization
 	void Awake () {
@@ -22,10 +22,11 @@ public class GameManager : MonoBehaviour {
 		else if (instance != this)
 			Destroy (gameObject);
 
-		generator = GetComponent<Generator> ();
+        Level = GameManager.instance.Level;
+
+        generator = GetComponent<Generator> ();
 		boardScript = GetComponent<BoardManager> ();
 		InitGame ();
-
         DontDestroyOnLoad(gameObject);
     }
 
@@ -51,6 +52,13 @@ public class GameManager : MonoBehaviour {
 	{
 		boardScript.SetupScene ();
         displayText();
+        Generator.instance.updateRate++;
+        if (Level + 1 % 2 == 0)
+            Generator.instance.waveRate++;
+        if (Level <= 3)
+            Generator.instance.enemyRate--; 
+        if (Generator.instance.enemyRate < 4)
+            Generator.instance.enemyRate = 4;
         Debug.Log("InitGame Level: " + Level);
     }
 
