@@ -212,6 +212,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11494728, guid: be7e56b5d16df3d4cb0f28c081f0961d, type: 2}
+      propertyPath: Level
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be7e56b5d16df3d4cb0f28c081f0961d, type: 2}
   m_IsPrefabParent: 0
@@ -535,6 +539,10 @@ Prefab:
       propertyPath: enemyRate
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 11464816, guid: 02668127ae51f5443a914a9af2610fec, type: 2}
+      propertyPath: updateRate
+      value: 45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 02668127ae51f5443a914a9af2610fec, type: 2}
   m_IsPrefabParent: 0
@@ -599,7 +607,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.9248505
+  orthographic size: 5.4768543
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

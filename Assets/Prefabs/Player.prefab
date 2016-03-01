@@ -76,6 +76,7 @@ MonoBehaviour:
   touchingFinish: 0
   stepBlip: {fileID: 8300000, guid: b649ba67ea7ced2418f112edfb68e57e, type: 3}
   deathClip: {fileID: 8300000, guid: 5f09ad44344d95041a3af3472a71b337, type: 3}
+  goal: {fileID: 8300000, guid: 4547be6ee7ead3a40b8c494b13a99b0c, type: 3}
 --- !u!212 &21253768
 SpriteRenderer:
   m_ObjectHideFlags: 1

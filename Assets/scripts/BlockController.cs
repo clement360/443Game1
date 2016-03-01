@@ -15,7 +15,7 @@ public class BlockController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-		normalVelocity = rb.velocity = direction * speed;
+		normalVelocity = rb.velocity = direction * (speed+GameManager.instance.Level);
 		touchingPlayer = false;
     }
 
@@ -24,7 +24,7 @@ public class BlockController : MonoBehaviour
 		this.direction = dir;
 	}
 
-	private void ResumeMoving(BlockController block)
+    private void ResumeMoving(BlockController block)
     {
         block.rb.velocity = normalVelocity;
         if(block == Generator.instance.stoppedBlock)
