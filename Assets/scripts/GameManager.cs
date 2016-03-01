@@ -11,17 +11,9 @@ public class GameManager : MonoBehaviour {
 	public Generator generator;
 	public BoardManager boardScript;
 
-	public GameObject player;
-    public int playerPosX;
-	public int playerPosY;
-	public GameObject playerObject;
-
     public GameObject levelText;
     private GameObject tempTextBox;
-
-    public AudioClip stepBlip;
-
-    public int Level = 1;
+    public int Level = 0;
 
 	// Use this for initialization
 	void Awake () {
@@ -33,11 +25,17 @@ public class GameManager : MonoBehaviour {
 		generator = GetComponent<Generator> ();
 		boardScript = GetComponent<BoardManager> ();
 		InitGame ();
-	}
+
+        DontDestroyOnLoad(gameObject);
+    }
 
     public void displayText()
     {
-        Destroy(tempTextBox);
+        if(Level > 1)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Level"));
+        }
+
         //Instantiates the Object
         tempTextBox = (GameObject)Instantiate(levelText, new Vector3(0, -4, 0), Quaternion.identity);
 
@@ -48,26 +46,12 @@ public class GameManager : MonoBehaviour {
         theText.text = "Level: " + Level;
     }
 
-	void OnLevelWasLoaded(int index){
-		Level++;
-        displayText();
-    }
-
 	void InitGame ()
 	{
 		boardScript.SetupScene ();
-		playerObject = (GameObject) Instantiate(player, new Vector3(-8f, 0, 0), Quaternion.identity );
-        playerPosX = -8;
-		playerPosY = 0;
         displayText();
 	}
 
-	public void MovePlayer(Vector3 dest)
-	{
-        SoundManager.instance.RandomizeSfx(stepBlip);
-		playerObject.transform.position = dest + new Vector3(0f, .3f, 0f);
-	}
-			
 	// Update is called once per frame
 	void Update () {
 

@@ -47,8 +47,8 @@ public class Generator : MonoBehaviour
 
     public void generateBlock()
     {
-        randomX = Random.Range(GameManager.instance.playerPosX, GameManager.instance.playerPosX + 2);
-        randomY = Random.Range(GameManager.instance.playerPosY - 1, GameManager.instance.playerPosY + 1);
+        randomX = Random.Range(PlayerManager.instance.playerPosX, PlayerManager.instance.playerPosX + 2);
+        randomY = Random.Range(PlayerManager.instance.playerPosY - 1, PlayerManager.instance.playerPosY + 1);
 
         GameObject right = Instantiate(block1, new Vector3(-11, randomY, 0), Quaternion.identity) as GameObject;
         BlockController rightController = (BlockController)right.GetComponent<BlockController>();
@@ -60,7 +60,7 @@ public class Generator : MonoBehaviour
     }
 
     IEnumerator generateWave() {
-        int xVal = GameManager.instance.playerPosY;
+        int xVal = PlayerManager.instance.playerPosY;
         bool rand = Random.Range(0, 20) % 2 == 0;
         Vector3 position;
 
@@ -80,9 +80,9 @@ public class Generator : MonoBehaviour
 
     IEnumerator generateEnemy()
     {
-        if(GameManager.instance.playerPosX > -4)
+        if (PlayerManager.instance.playerPosX > -4)
         {
-            Vector3 position = new Vector3(-11, GameManager.instance.playerPosY, 0);
+            Vector3 position = new Vector3(-11, PlayerManager.instance.playerPosY, 0);
 
             GameObject right = Instantiate(enemyBlock, position, Quaternion.identity) as GameObject;
             BlockController rightController = (BlockController)right.GetComponent<BlockController>();

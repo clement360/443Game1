@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchingFinish: 0
+  stepBlip: {fileID: 8300000, guid: b649ba67ea7ced2418f112edfb68e57e, type: 3}
 --- !u!212 &21253768
 SpriteRenderer:
   m_ObjectHideFlags: 1

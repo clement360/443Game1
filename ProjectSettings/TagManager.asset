@@ -13,6 +13,7 @@ TagManager:
   - Vertical Block
   - H Wave Block
   - Enemy Block
+  - Level
   layers:
   - Default
   - TransparentFX

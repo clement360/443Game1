@@ -66,9 +66,9 @@ public class BlockController : MonoBehaviour
 			if (touchingPlayer) {
 				ToggleMovement ();
 				Vector3 myCenter = this.transform.position;
-				GameManager.instance.MovePlayer (myCenter);
-				GameManager.instance.playerPosX = (int)myCenter.x;
-				GameManager.instance.playerPosY = (int)myCenter.y;
+                PlayerController.instance.MovePlayer (myCenter);
+                PlayerManager.instance.playerPosX = (int)myCenter.x;
+                PlayerManager.instance.playerPosY = (int)myCenter.y;
 
 				if (Generator.instance.prevBlock == null) {
 					Destroy (GameObject.FindGameObjectWithTag ("Start"));
