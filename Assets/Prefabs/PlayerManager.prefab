@@ -1,67 +1,56 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &120946
+--- !u!1 &118618
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 467488}
-  - 114: {fileID: 11464816}
+  - 4: {fileID: 452020}
+  - 114: {fileID: 11482676}
   m_Layer: 0
-  m_Name: Generator
-  m_TagString: Generator
+  m_Name: PlayerManager
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &467488
+--- !u!4 &452020
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 120946}
+  m_GameObject: {fileID: 118618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11464816
+--- !u!114 &11482676
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 120946}
+  m_GameObject: {fileID: 118618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40fb245e37dedc5489478dfa3c0c369c, type: 3}
+  m_Script: {fileID: 11500000, guid: e8af2fdbaec255a478b5e6582c5ebb2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateRate: 35
-  waveRate: 12
-  enemyRate: 7
-  block1: {fileID: 180308, guid: 514164a0733ab724ab5d927a9ce4e39f, type: 2}
-  block2: {fileID: 128270, guid: 3b3f301cf107e7d41bb23f10c6c610cc, type: 2}
-  waveBlock: {fileID: 190804, guid: 0d042fcc410953641af616f76035d1da, type: 2}
-  enemyBlock: {fileID: 193946, guid: dd178ef222977f243a4c2e0f8e18d793, type: 2}
+  player: {fileID: 177760, guid: 7c2643832ad8885499354046ea31d168, type: 2}
+  playerPosX: 0
+  playerPosY: 0
+  playerObject: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: m_TagString
-      value: Generator
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: updateRate
-      value: 45
-      objectReference: {fileID: 0}
+    m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 120946}
+  m_RootGameObject: {fileID: 118618}
   m_IsPrefabParent: 1
