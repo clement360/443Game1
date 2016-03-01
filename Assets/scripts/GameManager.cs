@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour {
     public GameObject levelText;
     private GameObject tempTextBox;
 
+    public AudioClip stepBlip;
+
     private int Level = 1;
 
 	// Use this for initialization
@@ -62,6 +64,7 @@ public class GameManager : MonoBehaviour {
 
 	public void MovePlayer(Vector3 dest)
 	{
+        SoundManager.instance.RandomizeSfx(stepBlip);
 		playerObject.transform.position = dest + new Vector3(0f, .3f, 0f);
 	}
 			
