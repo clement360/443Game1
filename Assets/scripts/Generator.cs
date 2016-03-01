@@ -47,8 +47,8 @@ public class Generator : MonoBehaviour
 
     public void generateBlock()
     {
-        randomX = Random.Range(PlayerManager.instance.playerPosX, PlayerManager.instance.playerPosX + 2);
-        randomY = Random.Range(PlayerManager.instance.playerPosY - 1, PlayerManager.instance.playerPosY + 1);
+        randomX = Random.Range(PlayerManager.instance.playerPosX - 3, PlayerManager.instance.playerPosX + 3);
+        randomY = Random.Range(PlayerManager.instance.playerPosY - 3, PlayerManager.instance.playerPosY + 3);
 
         GameObject right = Instantiate(block1, new Vector3(-11, randomY, 0), Quaternion.identity) as GameObject;
         BlockController rightController = (BlockController)right.GetComponent<BlockController>();
@@ -74,7 +74,7 @@ public class Generator : MonoBehaviour
             GameObject right = Instantiate(waveBlock, position, Quaternion.identity) as GameObject;
             BlockController rightController = (BlockController)right.GetComponent<BlockController>();
             rightController.setDirection(Vector3.right);
-            yield return new WaitForSeconds(.3f);
+            yield return new WaitForSeconds(.5f);
         }
     }
 
@@ -94,13 +94,13 @@ public class Generator : MonoBehaviour
 
     void FixedUpdate()
     {
-		if (frame == updateRate) 
+		if (frame == updateRate + GameManager.instance.Level*2) 
 		{
             generateBlock();
 			frame = 0;
 		}
 
-        if (frame2 == waveRate * updateRate)
+        if (frame2 == waveRate * updateRate + GameManager.instance.Level * 2)
         {
             StartCoroutine(generateWave());
             frame2 = 0;
