@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour {
     private GameObject tempTextBox;
     public int Level;
 
-	// Use this for initialization
-	void Awake () {
+    // Use this for initialization
+    void Awake () {
 		if (instance == null)
 			instance = this;
 		else if (instance != this)
@@ -52,13 +52,6 @@ public class GameManager : MonoBehaviour {
 	{
 		boardScript.SetupScene ();
         displayText();
-        Generator.instance.updateRate++;
-        if (Level + 1 % 2 == 0)
-            Generator.instance.waveRate++;
-        if (Level <= 3)
-            Generator.instance.enemyRate--; 
-        if (Generator.instance.enemyRate < 4)
-            Generator.instance.enemyRate = 4;
         Debug.Log("InitGame Level: " + Level);
     }
 
