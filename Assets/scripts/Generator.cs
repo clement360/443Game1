@@ -47,7 +47,7 @@ public class Generator : MonoBehaviour
 
     public void generateBlock()
     {
-        randomX = Random.Range(GameManager.instance.playerPosX, GameManager.instance.playerPosX + 1);
+        randomX = Random.Range(GameManager.instance.playerPosX, GameManager.instance.playerPosX + 2);
         randomY = Random.Range(GameManager.instance.playerPosY - 1, GameManager.instance.playerPosY + 1);
 
         GameObject right = Instantiate(block1, new Vector3(-11, randomY, 0), Quaternion.identity) as GameObject;
@@ -82,7 +82,7 @@ public class Generator : MonoBehaviour
     {
         if(GameManager.instance.playerPosX > -4)
         {
-            Vector3 position = new Vector3(-11, Random.Range(GameManager.instance.playerPosY - 1, GameManager.instance.playerPosY + 1), 0);
+            Vector3 position = new Vector3(-11, GameManager.instance.playerPosY, 0);
 
             GameObject right = Instantiate(enemyBlock, position, Quaternion.identity) as GameObject;
             BlockController rightController = (BlockController)right.GetComponent<BlockController>();
