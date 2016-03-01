@@ -43,13 +43,13 @@ public class Generator : MonoBehaviour
 		randomX = Random.Range (GameManager.instance.playerPosX-2, GameManager.instance.playerPosX+2);
 		randomY = Random.Range (GameManager.instance.playerPosY - 2, GameManager.instance.playerPosY + 2);
 
-		GameObject down = Instantiate(block1, new Vector3(randomX, 8, 0), Quaternion.identity) as GameObject;
-		BlockController downController = (BlockController)down.GetComponent<BlockController> ();
-		downController.setDirection (Vector3.down);
-
-		GameObject right = Instantiate(block2, new Vector3(-11, randomY, 0), Quaternion.identity ) as GameObject;
+		GameObject right = Instantiate(block1, new Vector3(-11, randomY, 0), Quaternion.identity ) as GameObject;
 		BlockController rightController = (BlockController)right.GetComponent<BlockController> ();
 		rightController.setDirection(Vector3.right);
+
+		GameObject down = Instantiate(block2, new Vector3(randomX, 8, 0), Quaternion.identity) as GameObject;
+		BlockController downController = (BlockController)down.GetComponent<BlockController> ();
+		downController.setDirection (Vector3.down);
 	}
 
     IEnumerator generateWave() {
