@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour {
 	void OnLevelWasLoaded(int index){
 		Level++;
         displayText();
+        Debug.Log("OnLevelLoaded Level: " + Level);
     }
 
 	void InitGame ()
@@ -60,7 +61,8 @@ public class GameManager : MonoBehaviour {
         playerPosX = -8;
 		playerPosY = 0;
         displayText();
-	}
+        Debug.Log("InitGame Level: " + Level);
+    }
 
 	public void MovePlayer(Vector3 dest)
 	{
