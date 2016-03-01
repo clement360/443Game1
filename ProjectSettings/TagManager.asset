@@ -7,9 +7,10 @@ TagManager:
   - Generator
   - Boundry
   - Start
-  - Block
+  - Horizontal Block
   - Previous Block
   - Current Block
+  - Vertical Block
   layers:
   - Default
   - TransparentFX

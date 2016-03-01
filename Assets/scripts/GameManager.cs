@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
 
     public AudioClip stepBlip;
 
-    private int Level = 1;
+    public int Level = 1;
 
 	// Use this for initialization
 	void Awake () {

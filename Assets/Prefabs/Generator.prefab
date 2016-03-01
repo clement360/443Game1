@@ -41,7 +41,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateRate: 55
   waveRate: 12
-  block: {fileID: 138556, guid: 484e2931d5df43041babae3a2857110c, type: 2}
+  block1: {fileID: 180308, guid: 514164a0733ab724ab5d927a9ce4e39f, type: 2}
+  block2: {fileID: 128270, guid: 3b3f301cf107e7d41bb23f10c6c610cc, type: 2}
   waveBlock: {fileID: 190804, guid: 0d042fcc410953641af616f76035d1da, type: 2}
 --- !u!1001 &100100000
 Prefab:
