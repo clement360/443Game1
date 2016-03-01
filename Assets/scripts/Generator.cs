@@ -6,20 +6,25 @@ using Random = UnityEngine.Random;
 public class Generator : MonoBehaviour
 {
 
-	public int updateRate;
+    public int updateRate;
     public int waveRate;
-	private int frame;
+    public int enemyRate;
+
+    private int frame;
     private int frame2;
+    private int frame3;
+
     private int randomX;
-	private int randomY;
+    private int randomY;
 
     public static Generator instance = null;
     [NonSerialized] public BlockController prevBlock;
-	[NonSerialized] public BlockController stoppedBlock;
+    [NonSerialized] public BlockController stoppedBlock;
 
-	public GameObject block1;
+    public GameObject block1;
     public GameObject block2;
     public GameObject waveBlock;
+    public GameObject enemyBlock;
 
     void Awake()
     {
@@ -33,24 +38,26 @@ public class Generator : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start ()
-	{
-		frame = 0;
-	}
+    void Start()
+    {
+        frame = 0;
+        frame2 = 0;
+        frame3 = 0;
+    }
 
     public void generateBlock()
-	{
-		randomX = Random.Range (GameManager.instance.playerPosX-2, GameManager.instance.playerPosX+2);
-		randomY = Random.Range (GameManager.instance.playerPosY - 2, GameManager.instance.playerPosY + 2);
+    {
+        randomX = Random.Range(GameManager.instance.playerPosX, GameManager.instance.playerPosX + 1);
+        randomY = Random.Range(GameManager.instance.playerPosY - 1, GameManager.instance.playerPosY + 1);
 
-		GameObject right = Instantiate(block1, new Vector3(-11, randomY, 0), Quaternion.identity ) as GameObject;
-		BlockController rightController = (BlockController)right.GetComponent<BlockController> ();
-		rightController.setDirection(Vector3.right);
+        GameObject right = Instantiate(block1, new Vector3(-11, randomY, 0), Quaternion.identity) as GameObject;
+        BlockController rightController = (BlockController)right.GetComponent<BlockController>();
+        rightController.setDirection(Vector3.right);
 
-		GameObject down = Instantiate(block2, new Vector3(randomX, 8, 0), Quaternion.identity) as GameObject;
-		BlockController downController = (BlockController)down.GetComponent<BlockController> ();
-		downController.setDirection (Vector3.down);
-	}
+        GameObject down = Instantiate(block2, new Vector3(randomX, 8, 0), Quaternion.identity) as GameObject;
+        BlockController downController = (BlockController)down.GetComponent<BlockController>();
+        downController.setDirection(Vector3.down);
+    }
 
     IEnumerator generateWave() {
         int xVal = GameManager.instance.playerPosY;
@@ -71,6 +78,20 @@ public class Generator : MonoBehaviour
         }
     }
 
+    IEnumerator generateEnemy()
+    {
+        if(GameManager.instance.playerPosX > -4)
+        {
+            Vector3 position = new Vector3(-11, Random.Range(GameManager.instance.playerPosY - 1, GameManager.instance.playerPosY + 1), 0);
+
+            GameObject right = Instantiate(enemyBlock, position, Quaternion.identity) as GameObject;
+            BlockController rightController = (BlockController)right.GetComponent<BlockController>();
+            rightController.setDirection(Vector3.right);
+
+            yield return new WaitForSeconds(.1f);
+        }
+    }
+
     void FixedUpdate()
     {
 		if (frame == updateRate) 
@@ -84,6 +105,14 @@ public class Generator : MonoBehaviour
             StartCoroutine(generateWave());
             frame2 = 0;
         }
+
+        if(frame3 == enemyRate * updateRate)
+        {
+            StartCoroutine(generateEnemy());
+            frame3 = 0;
+        }
+
+        frame3++;
         frame2++;
 		frame++;
     }

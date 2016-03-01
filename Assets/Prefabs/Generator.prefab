@@ -39,11 +39,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fb245e37dedc5489478dfa3c0c369c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateRate: 55
+  updateRate: 30
   waveRate: 12
+  enemyRate: 6
   block1: {fileID: 180308, guid: 514164a0733ab724ab5d927a9ce4e39f, type: 2}
   block2: {fileID: 128270, guid: 3b3f301cf107e7d41bb23f10c6c610cc, type: 2}
   waveBlock: {fileID: 190804, guid: 0d042fcc410953641af616f76035d1da, type: 2}
+  enemyBlock: {fileID: 193946, guid: dd178ef222977f243a4c2e0f8e18d793, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
